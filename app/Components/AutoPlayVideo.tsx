@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import YouTube from 'react-youtube';
 
 const YOUTUBE_VIDEO_ID = 'EtrlgIV1Zas';
 
@@ -49,13 +50,25 @@ export default function AutoPlayVideo() {
             Run. Jump. Own the street.
           </p>
           <div className="relative w-full max-w-4xl aspect-video shrink-0 z-10">
-            <div className="w-full h-full ring-2 ring-white/20 bg-black">
-              <iframe
-                src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&rel=0&controls=0&showinfo=0&loop=1&playlist=${YOUTUBE_VIDEO_ID}`}
-                title="Parkour video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
+            <div className="w-full h-full bg-black border-4 border-white rounded-xl shadow-lg">
+              <YouTube
+                videoId={YOUTUBE_VIDEO_ID}
+                className="w-full h-full rounded-xl"
+                opts={{
+                  width: '100%',
+                  height: '100%',
+                  playerVars: {
+                    autoplay: 1,
+                    mute: 1,
+                    rel: 0,
+                    controls: 0,
+                    showinfo: 0,
+                    modestbranding: 1,
+                    loop: 1,
+                    playlist: YOUTUBE_VIDEO_ID,
+                  },
+                }}
+                onEnd={(e) => e.target.playVideo()}
               />
             </div>
           </div>

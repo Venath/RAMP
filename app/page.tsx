@@ -30,8 +30,16 @@ export default function Home() {
         />
 
         <nav className="relative px-6 md:px-12 py-6 flex justify-between items-center">
-          <a href="/" className="font-[var(--font-bebas)] text-2xl md:text-3xl tracking-[0.2em]">
-            RAMP
+          <a href="/" className="flex items-center">
+            <Image
+              src="/Images/LOGO.png"
+              alt="RAMP Logo"
+              width={80}
+              height={80}
+              className="object-contain h-20 w-auto"
+              priority
+            />
+            {/* <span className="font-[var(--font-bebas)] text-2xl md:text-3xl tracking-[0.2em]">RAMP</span> */}
           </a>
         </nav>
 
